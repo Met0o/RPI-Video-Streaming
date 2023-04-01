@@ -1,0 +1,3 @@
+sudo raspi-config # Enable legacy camera, reboot (may not be required for openCV)
+sudo apt-get update
+pip install opencv-python-headless flask
