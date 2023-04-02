@@ -22,8 +22,8 @@ To auto-start the service on boot:
 
       [Service]
       User=root
-      WorkingDirectory=/path/to/the/app
-      ExecStart=/usr/bin/python3 /path/to/the/app/app.py
+      WorkingDirectory=/path/to/app
+      ExecStart=/usr/bin/python3 /path/to/app/app.py
       Restart=always
       RestartSec=5
 
@@ -36,3 +36,4 @@ To auto-start the service on boot:
     * Check the status - sudo systemctl status rpi_video_stream.service
     * Stop the service - sudo systemctl stop rpi_video_stream.service
     * Disable autostart - sudo systemctl disable rpi_video_stream.service
+    * Check the last 100 events in the service logs - sudo journalctl -u rpi_video_stream.service -n 100

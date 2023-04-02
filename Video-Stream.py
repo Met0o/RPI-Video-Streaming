@@ -19,14 +19,14 @@ def generate_frames():
     camera = cv2.VideoCapture(0)
     camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280) 
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-    camera.set(cv2.CAP_PROP_FPS, 30)
+    camera.set(cv2.CAP_PROP_FPS, 25)
 
     while True:
         success, frame = camera.read()
         if not success:
             break
         else:
-            encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 100]
+            encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 80]
             ret, buffer = cv2.imencode('.jpg', frame, encode_param)
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
