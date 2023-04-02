@@ -1,6 +1,5 @@
 import cv2
 from flask import Flask, Response, render_template
-import time
 
 app = Flask(__name__)
 
