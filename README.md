@@ -32,4 +32,7 @@ To auto-start the service on boot:
 
     * sudo systemctl daemon-reload
     * sudo systemctl restart rpi_video_stream.service
-    * sudo systemctl status rpi_video_stream.service
+
+    * Check the status - sudo systemctl status rpi_video_stream.service
+    * Stop the service - sudo systemctl stop rpi_video_stream.service
+    * Disable autostart - sudo systemctl disable rpi_video_stream.service
