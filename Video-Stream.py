@@ -3,9 +3,6 @@ from flask import Flask, Response, render_template
 import time
 
 app = Flask(__name__)
-"""
-It captures frames from the webcam, encodes them as JPEGs, and yields them to the Flask server
-"""
 
 @app.route('/')
 def index():
