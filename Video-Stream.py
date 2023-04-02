@@ -17,8 +17,8 @@ def index():
 
 def generate_frames():
     """
-    > The function `generate_frames` captures frames from the webcam, encodes them as JPEGs, and yields
-    them to the Flask server
+    The function `generate_frames` captures frames from the webcam using OpenCV, encodes them as JPEGs, and yields
+    them to the Flask server.
     """
     camera = cv2.VideoCapture(0)
     camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280) 
@@ -30,7 +30,7 @@ def generate_frames():
         if not success:
             break
         else:
-            encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 80]
+            encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 100]
             ret, buffer = cv2.imencode('.jpg', frame, encode_param)
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
