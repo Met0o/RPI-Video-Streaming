@@ -10,12 +10,8 @@ def index():
 
 def generate_frames():
     camera = cv2.VideoCapture(0)
-
-    # Set the resolution
-    camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280) #1280
-    camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720) #720
-
-    # Set the refresh rate (fps)
+    camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280) 
+    camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     camera.set(cv2.CAP_PROP_FPS, 30)
 
     while True:
