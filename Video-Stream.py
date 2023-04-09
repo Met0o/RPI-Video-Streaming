@@ -5,10 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    """
-    It returns the rendered template of the index.html file
-    :return: The index.html file is being returned.
-    """
+
     return render_template('index.html')
 
 def generate_frames():
@@ -17,7 +14,7 @@ def generate_frames():
     them to the Flask server.
     """
     camera = cv2.VideoCapture(0)
-    camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280) 
+    camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     camera.set(cv2.CAP_PROP_FPS, 25)
 
@@ -26,7 +23,7 @@ def generate_frames():
         if not success:
             break
         else:
-            encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 80]
+            encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 85]
             ret, buffer = cv2.imencode('.jpg', frame, encode_param)
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
@@ -34,12 +31,9 @@ def generate_frames():
 
 @app.route('/video_feed')
 def video_feed():
-    """
-    It returns a response object that contains a stream of images
-    :return: A response object with a generator that generates frames.
-    """
+
     return Response(generate_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True, threaded=True)
+    app.run(host='0.0.0.0', port=8000)
