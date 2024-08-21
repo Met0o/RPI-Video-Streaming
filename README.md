@@ -24,6 +24,8 @@ To auto-start the service on boot:
       User=username
       WorkingDirectory=/path/to/app
       ExecStart=/usr/bin/python3 /path/to/app/app.py
+      Environment="FLASK_USERNAME=username"
+      Environment="FLASK_PASSWORD=password"
       Restart=always
       RestartSec=5
 
