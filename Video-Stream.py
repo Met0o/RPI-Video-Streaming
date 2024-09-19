@@ -1,7 +1,10 @@
 import os
 import cv2
+import logging
 from flask import Flask, Response, render_template, request, Response
 from functools import wraps
+
+logging.basicConfig(filename='video_stream.log', level=logging.DEBUG)
 
 app = Flask(__name__)
 
@@ -55,4 +58,4 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, ssl_context=('certificate.crt', 'private.key'))
+    app.run(host='0.0.0.0', port=8000, ssl_context=('certificate.crt', 'private.key', debug=True)
